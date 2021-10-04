@@ -29,10 +29,10 @@ var schema = mongoose.Schema({
         type: Number,
     },
     usersLiked: {
-        type: String,
+        type: Array,
     },
     usersDisliked: {
-        type: String,
+        type: Array,
     }
 });
 
