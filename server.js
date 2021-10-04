@@ -14,6 +14,7 @@ const models = {
 
 const routes = {
     auth: require("./routes/auth"),
+    sauce: require("./routes/sauce"),
 };
 
 mongoose.connect(process.env.CREDENTIAL, async function (err) {
@@ -22,6 +23,7 @@ mongoose.connect(process.env.CREDENTIAL, async function (err) {
 });
 
 app.use("/api/auth/", routes.auth);
+app.use("/api/sauces/", routes.sauce);
 
 app.listen(port, () => {
     console.log(`Start on port http://localhost:${port}`);
