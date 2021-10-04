@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -15,14 +14,12 @@ router.post("/signup", async function (req, res) {
             res.json({
                 status: true,
             })
-            console.log("good UserModel", user);
         })
         .catch(function (err) {
             res.status(400);
             res.json({
                 status: false,
             })
-            console.log("err UserModel", err);
         });
 });
 
