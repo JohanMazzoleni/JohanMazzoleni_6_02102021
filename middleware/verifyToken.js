@@ -10,8 +10,17 @@ module.exports = function (req, res, next) {
 
         models.UsersModel.findOne({
             _id: decodeToken.userId,
-        }).then(function () {
-            next();
+        }).then(function (user) {
+            if (user === null) {
+                res.status(401);
+                res.json({
+                    status: false,
+                })
+            }
+            else {
+                next();
+            }
+
         })
             .catch(function () {
                 res.status(401);
