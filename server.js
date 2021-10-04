@@ -1,19 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 const port = 3000;
-
 require("dotenv").config();
 
-mongoose.connect(process.env.CREDENTIAL, function (err) {
+app.use(cors());
+app.use(express.json());
+
+const models = {
+    Users: require("./models/Users"),
+}
+
+const routes = {
+    auth: require("./routes/auth"),
+};
+
+mongoose.connect(process.env.CREDENTIAL, async function (err) {
     if (err) throw err;
     console.log("Successfully connected");
 });
 
-const auth = require("./routes/auth");
-
-app.use("/api/auth/", auth);
-
+app.use("/api/auth/", routes.auth);
 
 app.listen(port, () => {
     console.log(`Start on port http://localhost:${port}`);
