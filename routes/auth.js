@@ -8,13 +8,13 @@ const models = {
 }
 
 router.post("/signup", async function (req, res) {
-    models.UsersModel.save()
-        .then(function (user) {
-            res.status(200);
-            res.json({
-                status: true,
-            })
+    let user = new models.UsersModel(req.body);
+    user.save().then(function (user) {
+        res.status(200);
+        res.json({
+            status: true,
         })
+    })
         .catch(function (err) {
             res.status(400);
             res.json({
@@ -31,10 +31,10 @@ router.post("/login", async function (req, res) {
             if (result === true) {
                 let token = jwt.sign({
                     userId: user._id
-                }, process.env.JWT_SECRET, 
-                {
-                    expiresIn: "48h"
-                });
+                }, process.env.JWT_SECRET,
+                    {
+                        expiresIn: "48h"
+                    });
 
                 res.status(200);
                 res.json({
