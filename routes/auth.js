@@ -30,7 +30,6 @@ router.post("/login", async function (req, res) {
     models.UsersModel.findOne({
         email: req.body.email,
     }).then(function (user) {
-        console.log(user);
         bcrypt.compare(req.body.password, user.password).then(function (result) {
             if (result === true) {
                 let token = jwt.sign({
