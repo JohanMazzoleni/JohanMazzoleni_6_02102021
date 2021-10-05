@@ -12,9 +12,10 @@ module.exports = function (req, res) {
     }).then(function (sauceInfo) {
         if (sauceInfo) {
             var splitImage = sauceInfo.imageUrl.split("/");
-            var imagePath = splitImage[splitImage.length - 1];
+            var pathImage = path.join(__dirname, "../../uploads", splitImage[splitImage.length - 1])
 
-            fs.unlinkSync(path.join(__dirname, "../../uploads", imagePath));
+            if (fs.existsSync(pathImage))
+                fs.unlinkSync(pathImage);
 
             models.Sauce.deleteOne({
                 _id: id,
