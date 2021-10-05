@@ -24,15 +24,30 @@ module.exports = function (req, res) {
         updateArray["imageUrl"] = "http://localhost:3000/uploads/" + req.file.filename;
     }
 
+    console.log({
+        _id: id,
+        userId: data.userId,
+    });
+
     models.Sauce.updateOne({
         _id: id,
+        userId: data.userId,
     },
         {
             $set: updateArray
-        }).then(function () {
-            res.json({
-                status: true
-            });
+        }).then(function (data) {
+            if (data.modifiedCount === 1) {
+                res.json({
+                    status: true
+                });
+            }
+            else {
+                res.status(403);
+                res.json({
+                    status: false,
+                });
+            }
+
         })
         .catch(function () {
             res.status(400);
