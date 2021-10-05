@@ -24,11 +24,6 @@ module.exports = function (req, res) {
         updateArray["imageUrl"] = "http://localhost:3000/uploads/" + req.file.filename;
     }
 
-    console.log({
-        _id: id,
-        userId: data.userId,
-    });
-
     models.Sauce.updateOne({
         _id: id,
         userId: data.userId,
