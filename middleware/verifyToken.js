@@ -30,7 +30,7 @@ module.exports = function (req, res, next) {
             })
     }
     catch (err) {
-        res.status(401);
+        res.status(400);
         res.json({
             status: false,
         })

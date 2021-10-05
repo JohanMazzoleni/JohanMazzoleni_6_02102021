@@ -22,6 +22,7 @@ mongoose.connect(process.env.CREDENTIAL, async function (err) {
     console.log("Successfully connected");
 });
 
+app.use("/uploads", express.static("uploads"));
 app.use("/api/auth/", routes.auth);
 app.use("/api/sauces/", routes.sauce);
 
