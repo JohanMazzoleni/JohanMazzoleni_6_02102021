@@ -23,8 +23,6 @@ module.exports = function (req, res) {
     if (req.file)
         updateArray["imageUrl"] = "http://localhost:3000/uploads/" + req.file.filename,
 
-            console.log("debug");
-
     models.Sauce.updateOne({
         _id: id,
     },
