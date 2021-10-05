@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
+
 const models = {
-    UsersModel: require("../models/Users"),
-}
+    UsersModel: require("../models/users"),
+};
 
 module.exports = function (req, res, next) {
     try {
@@ -35,4 +36,4 @@ module.exports = function (req, res, next) {
             status: false,
         })
     }
-}
+};

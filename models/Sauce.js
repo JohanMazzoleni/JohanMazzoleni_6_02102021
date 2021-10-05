@@ -36,4 +36,4 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Sauce", schema);
+module.exports = (mongoose.models.Sauce) ? mongoose.models.Sauce : mongoose.model("Sauce", schema);

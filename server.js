@@ -8,10 +8,6 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-const models = {
-    Users: require("./models/Users"),
-}
-
 const routes = {
     auth: require("./routes/auth"),
     sauce: require("./routes/sauce"),

@@ -27,4 +27,4 @@ schema.pre("save", function (next) {
     });
 });
 
-module.exports = mongoose.model("Users", schema);
+module.exports = (mongoose.models.Users) ? mongoose.models.Users : mongoose.model("Users", schema);
