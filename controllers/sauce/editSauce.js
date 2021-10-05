@@ -20,8 +20,9 @@ module.exports = function (req, res) {
         heat: data.heat,
     };
 
-    if (req.file)
-        updateArray["imageUrl"] = "http://localhost:3000/uploads/" + req.file.filename,
+    if (req.file) {
+        updateArray["imageUrl"] = "http://localhost:3000/uploads/" + req.file.filename;
+    }
 
     models.Sauce.updateOne({
         _id: id,
