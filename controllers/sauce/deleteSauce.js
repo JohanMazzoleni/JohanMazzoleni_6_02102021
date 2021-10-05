@@ -32,7 +32,6 @@ module.exports = function (req, res) {
             res.json({
                 status: false,
             })
-            return;
         }
     }).catch(function () {
         res.status(404);
