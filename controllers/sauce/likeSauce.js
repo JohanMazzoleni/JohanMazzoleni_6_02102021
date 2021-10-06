@@ -10,6 +10,20 @@ module.exports = function (req, res) {
     models.Sauce.findOne({
         _id: id,
     }).then(function (sauce) {
+
+
+        // Vérifie si l'utilisateur a déjà like la sauce.
+        if (like === -1 || like === 1) {
+            if (sauce.usersLiked.includes(userId) || sauce.usersDisliked.includes(userId))
+            {
+                res.status(401);
+                res.json({
+                    status: false,
+                })
+                return;
+            }
+        }
+
         if (like === 1) {
             models.Sauce
                 .updateOne({
