@@ -29,6 +29,7 @@ module.exports = function (req, res) {
 
     models.Sauce.findOne({
         _id: id,
+        userId: res.locals.user.userId,
     }).then(function (sauceInfo) {
         if (sauceInfo) {
             if (req.file) {
@@ -41,7 +42,7 @@ module.exports = function (req, res) {
 
             models.Sauce.updateOne({
                 _id: id,
-                userId: data.userId,
+                userId: res.locals.user.userId,
             },
                 {
                     $set: updateArray
