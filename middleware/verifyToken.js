@@ -19,6 +19,7 @@ module.exports = function (req, res, next) {
                 })
             }
             else {
+                res.locals.userId = decodeToken.userId;
                 next();
             }
 
