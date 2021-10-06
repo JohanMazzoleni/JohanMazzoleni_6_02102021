@@ -12,7 +12,6 @@ module.exports = function (req, res) {
     };
 
     let {
-        userId,
         name,
         manufacturer,
         description,
@@ -21,7 +20,7 @@ module.exports = function (req, res) {
     } = JSON.parse(req.body.sauce);
 
     let sauce = new models.Sauce({
-        userId: userId,
+        userId: res.locals.user.userId,
         name: name,
         manufacturer: manufacturer,
         description: description,
