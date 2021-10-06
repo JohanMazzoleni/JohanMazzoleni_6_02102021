@@ -7,8 +7,10 @@ const models = {
 
 module.exports = function (req, res) {
     let id = req.params.id;
+    
     models.Sauce.findOne({
         _id: id,
+        userId: res.locals.user.userId,
     }).then(function (sauceInfo) {
         if (sauceInfo) {
             var splitImage = sauceInfo.imageUrl.split("/");
