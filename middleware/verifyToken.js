@@ -13,7 +13,7 @@ module.exports = function (req, res, next) {
             _id: decodeToken.userId,
         }).then(function (user) {
             if (user === null) {
-                res.status(401);
+                res.status(404);
                 res.json({
                     status: false,
                 })

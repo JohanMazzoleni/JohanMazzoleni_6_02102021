@@ -9,8 +9,8 @@ module.exports = function (req, res) {
             status: true,
         })
     })
-        .catch(function (err) {
-            res.status(400);
+        .catch(function () {
+            res.status(409); // 409	Conflict La requête ne peut être traitée en l’état actuel.
             res.json({
                 status: false,
             })

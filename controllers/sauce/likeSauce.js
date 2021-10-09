@@ -3,9 +3,8 @@ const models = {
 };
 
 module.exports = function (req, res) {
-    let id = req.params.id;
-    let like = req.body.like;
-    let userId = req.body.userId;
+    const { id } = req.params;
+    let { like, userId } = req.body;
 
     models.Sauce.findOne({
         _id: id,
@@ -14,9 +13,8 @@ module.exports = function (req, res) {
 
         // Vérifie si l'utilisateur a déjà like la sauce.
         if (like === -1 || like === 1) {
-            if (sauce.usersLiked.includes(userId) || sauce.usersDisliked.includes(userId))
-            {
-                res.status(401);
+            if (sauce.usersLiked.includes(userId) || sauce.usersDisliked.includes(userId)) {
+                res.status(409); // 409	Conflict La requête ne peut être traitée en l’état actuel.
                 res.json({
                     status: false,
                 })

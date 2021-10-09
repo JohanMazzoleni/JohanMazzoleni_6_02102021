@@ -40,8 +40,7 @@ module.exports = function (req, res) {
         });
     })
         .catch(function (err) {
-            console.log(err);
-            res.status(401);
+            res.status(400);
             res.json({
                 status: false,
             })

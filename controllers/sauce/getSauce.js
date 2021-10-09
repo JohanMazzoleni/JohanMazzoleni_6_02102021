@@ -3,7 +3,7 @@ const models = {
 };
 
 module.exports = function (req, res) {
-    let id = req.params.id;
+    const { id } = req.params;
 
     models.Sauce.findOne({
         _id: id,

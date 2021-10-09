@@ -6,7 +6,7 @@ const models = {
 };
 
 module.exports = function (req, res) {
-    let id = req.params.id;
+    const { id } = req.params;
 
     let data;
 
@@ -46,19 +46,10 @@ module.exports = function (req, res) {
             },
                 {
                     $set: updateArray
-                }).then(function (data) {
-                    if (data.modifiedCount === 1) {
-                        res.json({
-                            status: true
-                        });
-                    }
-                    else {
-                        res.status(403);
-                        res.json({
-                            status: false,
-                        });
-                    }
-
+                }).then(function () {
+                    res.json({
+                        status: true
+                    });
                 })
                 .catch(function () {
                     res.status(400);
