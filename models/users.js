@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const uniqueValidator = require("mongoose-unique-validator");
 
 var validateEmail = function (email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -26,5 +27,7 @@ schema.pre("save", function (next) {
         next();
     });
 });
+
+schema.plugin(uniqueValidator);
 
 module.exports = (mongoose.models.Users) ? mongoose.models.Users : mongoose.model("Users", schema);
